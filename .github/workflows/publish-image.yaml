@@ -29,9 +29,9 @@ on:
       hardening_pass:
         # h2 = the relocked-gems pass of the shell-less image (cgi/json-jwt/mail backlog closed);
         # h1 stays frozen as published.
-        description: 'Hardening pass — h2 is the current shell-less default; h1 is frozen'
+        description: 'Hardening pass — h3 is the current shell-less default (zero-findings); h1/h2 frozen'
         required: true
-        default: 'h2'
+        default: 'h3'
       push:
         # DEFAULT TRUE by operator decision: a dispatch publishes. The scan gate
         # (fail_on_critical, below) still blocks a push on fixable CRITICAL/HIGH findings, so a
