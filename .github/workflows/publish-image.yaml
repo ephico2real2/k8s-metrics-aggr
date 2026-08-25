@@ -27,9 +27,11 @@ on:
   workflow_dispatch:
     inputs:
       hardening_pass:
-        description: 'Hardening pass number — bump when re-hardening the same upstream version (h1, h2, ...)'
+        # h2 = the relocked-gems pass of the shell-less image (cgi/json-jwt/mail backlog closed);
+        # h1 stays frozen as published.
+        description: 'Hardening pass — h2 is the current shell-less default; h1 is frozen'
         required: true
-        default: 'h1'
+        default: 'h2'
       push:
         # DEFAULT TRUE by operator decision: a dispatch publishes. The scan gate
         # (fail_on_critical, below) still blocks a push on fixable CRITICAL/HIGH findings, so a
