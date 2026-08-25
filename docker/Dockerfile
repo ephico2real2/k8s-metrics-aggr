@@ -31,8 +31,8 @@ RUN mkdir /licenses
 COPY --from=builder /app/LICENSE /licenses/LICENSE
 
 COPY --from=builder /app/docker/Gemfile* ./
-RUN yum update -y \
-   && yum remove -y nodejs npm \
+RUN dnf update -y \
+   && dnf remove -y nodejs npm \
    && gem install bundler \
    && gem uninstall -i /usr/share/gems bundler \
    && gem unpack /tmp/*.gem --target gem \
