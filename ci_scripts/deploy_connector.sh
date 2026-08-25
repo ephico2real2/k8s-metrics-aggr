@@ -11,10 +11,13 @@ fi
 
 # Clone splunk-connect-for-kubernetes repo
 cd /opt
-git clone https://github.com/splunk/splunk-connect-for-kubernetes.git
+# OUR fork. The upstream is archived and its values.yaml still names the splunk/* images,
+# which no longer exist on Docker Hub — a functional test against it would fail on
+# ImagePullBackOff before it ever exercised the plugin.
+git clone https://github.com/ephico2real2/splunk-connect-for-kubernetes.git
 cd splunk-connect-for-kubernetes
 
-minikube image load splunk/k8s-metrics-aggr:recent
+minikube image load ephico2real/k8s-metrics-aggr:recent
 
 echo "Deploying k8s-connect with latest changes"
 helm install ci-sck --set global.splunk.hec.token=$CI_SPLUNK_HEC_TOKEN \
